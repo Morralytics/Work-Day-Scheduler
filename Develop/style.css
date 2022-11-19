@@ -57,3 +57,9 @@ textarea {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
 }
+
+.custom-hr {
+  border: 5px solid black;
+  opacity: 1;
+  border-radius: 5px;
+}
