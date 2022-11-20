@@ -24,7 +24,16 @@ $(function (
   var renderStoredNotes = function() {
     userInputArea.textContent = '';
 
-    console.log(userInputArea.textContent);
+    var variable = JSON.parse(localStorage.getItem('eventNote'));
+      console.log(variable.note.trim());
+      console.log(variable.time.trim());
+      notes.push(variable);
+      console.log(notes);
+
+      for (i = 0; i < notes.length; i++) {
+        userInputArea.textContent = notes[i].note;
+        console.log(userInputArea.textContent);
+      }
   }
 
 
@@ -35,18 +44,13 @@ $(function (
 
 
   var checkLocalStorage = function() {
-    var storedNotes = JSON.parse(localStorage.getItem('eventNote'));
 
-    if (storedNotes !== null) {
-      notes = storedNotes;
-    }
+    //Need to check if there is already information stored in local storage
+    //And if there is, to go ahead and render those items in their respective places
+      if () {
+
+      }
   }
-
-
-
-
-
-
 
 
   clickedBtn.on('click', function() {
@@ -59,23 +63,13 @@ $(function (
     
     localStorage.setItem('eventNote', JSON.stringify({time: eventHourID, note: eventNote}));
     
+
+    renderStoredNotes();
+
     // if (!localStorage.getItem('eventNote')) {
     //   var variable = localStorage.setItem('eventNote', JSON.stringify(eventNote));
     //   storedNotes.value = variable;
-    // }
-
-    
-      var variable = JSON.parse(localStorage.getItem('eventNote'));
-      console.log(variable.note);
-      console.log(variable.time);
-    // if(storeNote !== null) {
-    //   variable.val = storeNote;
-    // };
-    // console.log(localStorage.getItem('eventNote'))
-    // if ($(this).parent().is('#hour-10')) {
-    // } else {
-    //   console.log('working but not in hour 10')
-    // }
+    // 
   })
 
   // TODO: Add code to apply the past, present, or future class to each time
