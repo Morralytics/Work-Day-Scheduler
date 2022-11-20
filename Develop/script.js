@@ -2,6 +2,7 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 var clickedBtn = $('.saveBtn');
+
 $(function (
 
 ) {
@@ -19,7 +20,8 @@ $(function (
 
   clickedBtn.on('click', function() {
     if ($(this).parent().is('#hour-10')) {
-      console.log("working in hour 10")
+      var eventNote = $(this).parent().children().eq(1).val();
+      console.log(eventNote);
     } else {
       console.log('working but not in hour 10')
     }
@@ -41,4 +43,6 @@ $(function (
   var currentHour = dayjs().format('H');
 
   currentDay.text(today + ' ' + currentHour);
+
+  console.log(currentHour);
 });
