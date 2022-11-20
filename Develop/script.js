@@ -19,12 +19,19 @@ $(function (
   //   console.log(logTxt);
 
   clickedBtn.on('click', function() {
-    if ($(this).parent().is('#hour-10')) {
-      var eventNote = $(this).parent().children().eq(1).val();
-      console.log(eventNote);
-    } else {
-      console.log('working but not in hour 10')
-    }
+
+    // This works if a certain element is triggered with the is(hour-10)
+    // Next I need to target any element that is clicked
+    // And save it to local storage
+    // Grab from local storage
+    // Add to html from local storage
+    var eventNote = $(this).parent().children().eq(1).val();
+    console.log(eventNote);
+    // if ($(this).parent().is('#hour-10')) {
+      
+    // } else {
+    //   console.log('working but not in hour 10')
+    // }
   })
 
   // TODO: Add code to apply the past, present, or future class to each time
