@@ -21,36 +21,16 @@ $(function (
   //   var logTxt = $('.description').val();
   //   console.log(logTxt);
 
-  var renderStoredNotes = function() {
-    userInputArea.textContent = '';
-
-    var variable = JSON.parse(localStorage.getItem('eventNote'));
-      console.log(variable.note.trim());
-      console.log(variable.time.trim());
-      notes.push(variable);
-      console.log(notes);
-
-      for (i = 0; i < notes.length; i++) {
-        userInputArea.textContent = notes[i].note;
-        console.log(userInputArea.textContent);
-      }
-  }
-
-
-
-
-
-
-
-
-  var checkLocalStorage = function() {
-
-    //Need to check if there is already information stored in local storage
-    //And if there is, to go ahead and render those items in their respective places
-      if () {
-
-      }
-  }
+ 
+  // var checkLocalStorage = function() {
+  //   var variable = JSON.parse(localStorage.getItem('eventNote'));
+  //   //Need to check if there is already information stored in local storage
+  //   //And if there is, to go ahead and render those items in their respective places
+  //     if (variable.note !== null) {
+  //       notes.push(variable);
+  //     }
+  //     renderStoredNotes();
+  // }
 
 
   clickedBtn.on('click', function() {
@@ -65,6 +45,7 @@ $(function (
     
 
     renderStoredNotes();
+    
 
     // if (!localStorage.getItem('eventNote')) {
     //   var variable = localStorage.setItem('eventNote', JSON.stringify(eventNote));
@@ -89,7 +70,28 @@ $(function (
 
   currentDay.text(today + ' ' + currentHour);
 
+  var loadNotes = function() {
+    var myContent = localStorage.getItem('eventNote');
+    var myContentNote = myContent[0];
+    console.log(myContentNote);
+  }
   
-  checkLocalStorage();
+  var renderStoredNotes = function() {
+    userInputArea.textContent = '';
+    var variable = JSON.parse(localStorage.getItem('eventNote'));
+    
+      // console.log(variable.note.trim());
+      // console.log(variable.time.trim());
+      notes.push(variable);
+      // console.log(notes);
+    userInputArea.textContent = localStorage.getItem('eventNote');
+      for (i = 0; i < notes.length; i++) {
+        console.log("working");
+        userInputArea.textContent = notes[i].note;
+        console.log(userInputArea.textContent);
+      }
+  }
+  loadNotes();
+  renderStoredNotes();
 });
 
