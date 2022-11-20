@@ -2,9 +2,12 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 var clickedBtn = $('.saveBtn');
+var userInputArea = $('textarea');
+
+var notes = []
+
 
 $(function (
-
 ) {
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
@@ -18,17 +21,58 @@ $(function (
   //   var logTxt = $('.description').val();
   //   console.log(logTxt);
 
-  clickedBtn.on('click', function() {
+  var renderStoredNotes = function() {
+    userInputArea.textContent = '';
 
-    // This works if a certain element is triggered with the is(hour-10)
-    // Next I need to target any element that is clicked
+    console.log(userInputArea.textContent);
+  }
+
+
+
+
+
+
+
+
+  var checkLocalStorage = function() {
+    var storedNotes = JSON.parse(localStorage.getItem('eventNote'));
+
+    if (storedNotes !== null) {
+      notes = storedNotes;
+    }
+  }
+
+
+
+
+
+
+
+
+  clickedBtn.on('click', function() {
     // And save it to local storage
     // Grab from local storage
     // Add to html from local storage
     var eventNote = $(this).parent().children().eq(1).val();
-    console.log(eventNote);
+    var eventHourID = $(this).parent().attr('id');
+
+    
+    localStorage.setItem('eventNote', JSON.stringify({time: eventHourID, note: eventNote}));
+    
+    // if (!localStorage.getItem('eventNote')) {
+    //   var variable = localStorage.setItem('eventNote', JSON.stringify(eventNote));
+    //   storedNotes.value = variable;
+    // }
+
+    
+      var variable = JSON.parse(localStorage.getItem('eventNote'));
+      console.log(variable.note);
+      console.log(variable.time);
+    // if(storeNote !== null) {
+    //   variable.val = storeNote;
+    // };
+    // console.log(localStorage.getItem('eventNote'))
     // if ($(this).parent().is('#hour-10')) {
-      
     // } else {
     //   console.log('working but not in hour 10')
     // }
@@ -51,5 +95,7 @@ $(function (
 
   currentDay.text(today + ' ' + currentHour);
 
-  console.log(currentHour);
+  
+  checkLocalStorage();
 });
+
