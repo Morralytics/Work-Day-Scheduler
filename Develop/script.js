@@ -4,8 +4,32 @@
 var clickedBtn = $('.saveBtn');
 var userInputArea = $('textarea');
 
-var notes = []
+var timeID = $('.container-fluid').children('.time-block');
 
+// var timeIDArr = [];
+
+var notes = [];
+
+var variable = '';
+
+var txt = '';
+
+var eventHourIDArr = [];
+console.log(timeID);
+function setStorage() {
+  variable = JSON.parse(localStorage.getItem('eventNote'));
+  notes.push(variable);
+  this.userInputArea.value = 'sample code';
+
+  // for (i = 0; i < notes.length; i++) {
+  //   // txt = notes[i].time;
+  // }
+}
+
+
+
+// userInputArea.textContent = localStorage.getItem('eventNote');
+setStorage();
 
 $(function (
 ) {
@@ -34,23 +58,13 @@ $(function (
 
 
   clickedBtn.on('click', function() {
-    // And save it to local storage
-    // Grab from local storage
-    // Add to html from local storage
     var eventNote = $(this).parent().children().eq(1).val();
     var eventHourID = $(this).parent().attr('id');
 
-    
+    txt = eventNote;
     localStorage.setItem('eventNote', JSON.stringify({time: eventHourID, note: eventNote}));
-    
 
-    renderStoredNotes();
-    
-
-    // if (!localStorage.getItem('eventNote')) {
-    //   var variable = localStorage.setItem('eventNote', JSON.stringify(eventNote));
-    //   storedNotes.value = variable;
-    // 
+    setStorage();
   })
 
   // TODO: Add code to apply the past, present, or future class to each time
@@ -64,34 +78,68 @@ $(function (
   // attribute of each time-block be used to do this?
   //
   // TODO: Add code to display the current date in the header of the page.
-  var today = dayjs().format('dddd, MMMM YYYY');
-  var currentDay = $('#currentDay');
-  var currentHour = dayjs().format('H');
 
-  currentDay.text(today + ' ' + currentHour);
-
-  var loadNotes = function() {
-    var myContent = localStorage.getItem('eventNote');
-    var myContentNote = myContent[0];
-    console.log(myContentNote);
-  }
-  
-  var renderStoredNotes = function() {
-    userInputArea.textContent = '';
-    var variable = JSON.parse(localStorage.getItem('eventNote'));
+  // var renderStoredNotes = function() {
+  //   userInputArea.textContent = '';
     
-      // console.log(variable.note.trim());
-      // console.log(variable.time.trim());
-      notes.push(variable);
-      // console.log(notes);
-    userInputArea.textContent = localStorage.getItem('eventNote');
-      for (i = 0; i < notes.length; i++) {
-        console.log("working");
-        userInputArea.textContent = notes[i].note;
-        console.log(userInputArea.textContent);
-      }
-  }
-  loadNotes();
-  renderStoredNotes();
+    
+  //     // console.log(variable.note.trim());
+  //     // console.log(variable.time.trim());
+  //     notes.push(variable);
+  //     // console.log(notes);
+  //   userInputArea.textContent = localStorage.getItem('eventNote');
+  //     for (i = 0; i < notes.length; i++) {
+  //       console.log("working");
+  //       userInputArea.textContent = notes[i].note;
+  //       console.log(userInputArea.textContent);
+  //     }
+  // }
+  // loadNotes();
+  // renderStoredNotes();
 });
 
+var today = dayjs().format('dddd, MMMM YYYY');
+var currentDay = $('#currentDay');
+var currentHour = dayjs().format('H');
+
+currentDay.text(today + ' ' + currentHour);
+var arrForNum = [];
+
+
+
+
+timeID.each(function(index, elements) {
+  
+  console.log('is this even working');
+})
+// for (i = 0; i < timeID.length; i++) {
+  
+//   arrForNum.push(timeID[i].id.slice(5));
+//   console.log(arrForNum[i]);
+//   // if (arrForNum[i] < currentHour) {
+//     //   timeID.addClass('past');
+//     //   console.log("less than current hour");
+//     //   console.log(arrForNum[i]);
+//     // } 
+//     if (+arrForNum[i] < +currentHour) {
+//         timeID.addClass('past');
+//         console.log('current hour');
+//       } else if (+arrForNum[i] > +currentHour) {
+//         timeID.addClass('future');
+//       } else if (arrForNum[i] == +currentHour) {
+//         timeID.addClass('present');
+//       }
+//       console.log(timeID[i])
+// }
+
+// if (arrForNum[0] < +currentHour) {
+//   console.log('9am is less than current hour')
+// }
+// console.log(arrForNum);
+// console.log(arrForNum[0]);
+// console.log(arrForNum);
+// if (+arrForNum[7] == 16) {
+//   console.log('equals');
+// }
+
+// console.log(arrForNum);
