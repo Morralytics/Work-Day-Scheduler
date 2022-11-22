@@ -1,3 +1,4 @@
+$(function () {
 // Saved JQuery selectors
 var clickedBtn = $('.saveBtn');
 var userInputArea = $('textarea');
@@ -18,8 +19,7 @@ function setStorage() {
 }
 setStorage();
 
-$(function (
-) {
+
 
 // Triggers an event when the button element is clicked
 // Traversed the DOM using this to target each specific value of note and hour to use later
