@@ -29,7 +29,7 @@ setStorage();
     txt = eventNote;
     localStorage.setItem('eventNote', JSON.stringify({time: eventHourID, note: eventNote}));
 
-    setStorage();
+    colorChange();
   })
 });
 
@@ -48,9 +48,11 @@ var colorChange = function() {
   // With the same consideration to the comment below, moved the current hour into this function for iteration
   var currentHour = dayjs().format('H');
   
-  $('#hour').each(function (){
+  $('.time-block').each(function (){
+
   // Moving the timeID into the function instead as a global variable, that way it can be used on iteration properly
-    // var timeID = $('.container-fluid').children('.time-block');
+    var timeID = parseInt($(this).attr('id').split('hour-')[1]);
+    console.log(timeID);
     
     // arrForNum.push(timeID[i].id.slice(5));
     // console.log(arrForNum[i]);
