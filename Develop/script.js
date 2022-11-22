@@ -1,20 +1,11 @@
 $(function () {
 // Saved JQuery selectors
 var clickedBtn = $('.saveBtn');
-var userInputArea = $('textarea');
-// This is used to get all the individual div of hours
-
-
-var notes = [];
-var variable = '';
 
 // Implication of dayjs to format the current date and hour for tracking
 var currentDay = $('#currentDay');
 var today = dayjs().format('dddd, MMMM YYYY');
 currentDay.text(today);
-
-
-
 
 // Triggers an event when the button element is clicked
 // Traversed the DOM using this to target each specific value of note and hour to use later
@@ -39,6 +30,13 @@ function setStorage() {
   $('.description').each(function() {
     var storedHour = $(this).parent().attr('id').split('hour-')[1];
     var storedNote = localStorage.getItem(storedHour);
+
+    // Now I need to check if there is already items in local storage and if there is, display it
+    if (storedNote !== null) {
+      // What I wasn't doing before was storing the value within the parameters of .val()
+      // Reading the documentation on val allowed this work this way
+      $(this).val(storedNote);
+    }
   })
 }
 
