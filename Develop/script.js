@@ -53,23 +53,14 @@ var colorChange = function() {
   // Moving the timeID into the function instead as a global variable, that way it can be used on iteration properly
     var timeID = parseInt($(this).attr('id').split('hour-')[1]);
     console.log(timeID);
-    
-    // arrForNum.push(timeID[i].id.slice(5));
-    // console.log(arrForNum[i]);
-  
-      // For some reason I was unable to properly compare the values of dayjs and my sliced elements until I parsed the day into a number
-      // From here, I know I have to select the current timeID and set that class to whichever condition
-      // However, I was unable to complete this too
-      // if (+arrForNum[i] < +currentHour) {
-      //     timeID.addClass('past');
-      //     console.log('current hour');
-      //   } else if (+arrForNum[i] > +currentHour) {
-      //     timeID.addClass('future');
-      //   } else if (arrForNum[i] == +currentHour) {
-      //     timeID.addClass('present');
-      //   }
-        // console.log(timeID[i])
 
+      if (timeID < +currentHour) {
+          $(this).addClass('past');
+        } else if (timeID > +currentHour) {
+          $(this).addClass('future');
+        } else if (timeID == +currentHour) {
+          $(this).addClass('present');
+        }
 })
 }
 // I was unable to get a lot of the functionality working however I have set up a session to go over this project more in depth
