@@ -25,3 +25,5 @@ Below you will find a screenshot to this website.
 ## Credits
 
 These questions were created and implimented by myself using knowledge from the Bootcamp and a variety of research sites such as W3Schools, Stack overflow, and MDN Webdocs.
+
+[Feel free to join me through past and future projects!](https://github.com/Morralytics)
